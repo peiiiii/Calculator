@@ -8,8 +8,8 @@ import com.ebay.calculator.service.impl.SubtractionStrategy;
 import com.ebay.calculator.util.Operation;
 
 public class OperationStrategyFactory {
-    public static OperationStrategy getStrategy(String operation) {
-        switch (Operation.valueOf(operation.toUpperCase())) {
+    public static OperationStrategy getStrategy(Operation operation) {
+        switch (operation) {
             case ADD:
                 return new AdditionStrategy();
             case SUBTRACT:

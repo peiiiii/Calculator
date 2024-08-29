@@ -29,7 +29,6 @@ public class CalculatorController {
     @PostMapping("/calculate")
 	public ResponseEntity<CustomizedResponse> calculate(@RequestBody CalculateRequest calculateRequest) {
 		BigDecimal result = calculatorService.calculateOperation(calculateRequest.getOperation(), calculateRequest.getNum1(), calculateRequest.getNum2());
-		// return new ResponseEntity<>(result, HttpStatus.OK);
 		return new ResponseEntity<>(CustomizedResponse.builder().code("200").message("Calculate operation successful").data(result).success(true).build(), HttpStatus.OK);
 	}
 
