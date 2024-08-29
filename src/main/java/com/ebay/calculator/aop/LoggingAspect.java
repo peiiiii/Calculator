@@ -24,6 +24,6 @@ public class LoggingAspect {
     // Log any exceptions thrown by methods in the service package
     @AfterThrowing(pointcut = "execution(* com.ebay.calculator.service.*.*(..))", throwing = "e")
     public void logAfterThrowingMethod(Exception e) {
-        logger.error("An exception occurred: {} from {}",  e.getMessage(), e);
+        logger.error("An exception occurred: {} ",  e.getMessage());
     }
 }
