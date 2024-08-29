@@ -23,7 +23,6 @@ public class CalculatorTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        Number num1 = 2, number2 = 7;
     }
 
     @Test
