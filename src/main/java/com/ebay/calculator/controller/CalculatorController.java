@@ -1,5 +1,7 @@
 package com.ebay.calculator.controller;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ebay.calculator.model.CalculateRequest;
-import com.ebay.calculator.model.CustomizedResponse;
+import com.ebay.calculator.request.CalculateRequest;
+import com.ebay.calculator.request.ChainRequest;
+import com.ebay.calculator.response.CustomizedResponse;
 import com.ebay.calculator.service.CalculatorService;
 
 
@@ -24,13 +27,14 @@ public class CalculatorController {
 
     @PostMapping("/calculate")
 	public CustomizedResponse calculate(@RequestBody CalculateRequest calculateRequest) {
-		Number result = calculatorService.calculateOperation(calculateRequest.getInitialValue(), calculateRequest.getOperation(), calculateRequest.getValue());
+		BigDecimal result = calculatorService.calculateOperation(calculateRequest.getOperation(), calculateRequest.getNum1(), calculateRequest.getNum2());
+		System.out.println("result : " + result);
 		return CustomizedResponse.builder().code("200").message("Calculate operation successful").data(result).success(true).build();
 	}
 
 	@PostMapping("/chain")
-	public CustomizedResponse chainOperations(@RequestBody CalculateRequest calculateRequest) {
-		Number result = calculatorService.chainOperations(calculateRequest.getInitialValue(), calculateRequest.getOperations(), calculateRequest.getValues());
+	public CustomizedResponse chainOperations(@RequestBody ChainRequest chainRequest) {
+		BigDecimal result = calculatorService.chainOperations(chainRequest.getOperations(), chainRequest.getInitialValue(), chainRequest.getValues());
 		return CustomizedResponse.builder().code("200").message("Chaining operations successful").data(result).success(true).build();
 	}
 }

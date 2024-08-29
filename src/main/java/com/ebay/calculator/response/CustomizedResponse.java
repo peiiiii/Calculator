@@ -1,4 +1,4 @@
-package com.ebay.calculator.model;
+package com.ebay.calculator.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

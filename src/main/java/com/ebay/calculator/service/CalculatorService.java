@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface CalculatorService {
-    BigDecimal calculateOperation(BigDecimal num1, Optional<String> operation, Optional<BigDecimal> num2);
-    BigDecimal chainOperations(BigDecimal initialValue, Optional<String[]> operations, Optional<BigDecimal[]> values);
+    BigDecimal calculateOperation(Optional<String> operation, Optional<Number> num1, Optional<Number> num2);
+    BigDecimal chainOperations(Optional<String[]> operations, Optional<Number> initialValue, Optional<Number[]> values);
 }

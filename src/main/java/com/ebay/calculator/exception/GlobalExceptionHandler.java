@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.ebay.calculator.model.CustomizedResponse;
+import com.ebay.calculator.response.CustomizedResponse;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
